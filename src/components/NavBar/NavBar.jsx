@@ -1,13 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
-    const links = <div className="space-x-4">
+    const links = <>
         <NavLink to="/" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Home</NavLink>
         <NavLink to="/updateprofile" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Update Profile</NavLink>
         <NavLink to="/userprofile" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Profile</NavLink>
         <NavLink to="/contact" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Contact Us</NavLink>
         <NavLink to="/about" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>About</NavLink>
-    </div>
+    </>
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -22,8 +22,8 @@ const NavBar = () => {
                     </div>
                     <Link to="/" className="btn btn-ghost text-2xl">Cam Realty</Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                <div className="navbar-center hidden lg:flex ">
+                    <ul className="menu menu-horizontal px-1 lg:gap-4">
                         {links}
                     </ul>
                 </div>
