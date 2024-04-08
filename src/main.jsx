@@ -11,6 +11,9 @@ import UpdateProfile from './components/UpdateProfile/UpdateProfile';
 import UserProfile from './components/UserProfile/UserProfile';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import CardDetails from './components/CardDetails/CardDetails';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +22,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ()=> fetch("/data.json"),
+      },
+      {
+        path: '/data/:id',
+        element: <CardDetails></CardDetails>,
+        loader: ()=> fetch("/data.json"),
       },
       {
         path: '/updateprofile',
@@ -36,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
       }
     ]
   },

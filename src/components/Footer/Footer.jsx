@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10 bg-neutral text-primary-content">
+        <footer className="footer footer-center p-10 bg-neutral text-primary-content mt-10">
             <aside>
                 <p className="text-xl font-bold">
                     Cam Realty
