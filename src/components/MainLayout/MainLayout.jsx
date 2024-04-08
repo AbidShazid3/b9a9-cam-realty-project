@@ -4,8 +4,10 @@ import Footer from "../Footer/Footer";
 const MainLayout = () => {
     return (
         <div>
-            <NavBar></NavBar>
-            <Outlet></Outlet>
+            <div className="container mx-auto md:p-2 lg:px-2">
+                <NavBar></NavBar>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );
