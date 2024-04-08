@@ -1,12 +1,24 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const NavBar = () => {
+    const { user, signOutUser } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then()
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
     const links = <>
-        <NavLink to="/" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Home</NavLink>
-        <NavLink to="/updateprofile" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Update Profile</NavLink>
-        <NavLink to="/userprofile" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Profile</NavLink>
-        <NavLink to="/contact" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>Contact Us</NavLink>
-        <NavLink to="/about" className={({isActive})=> isActive ? 'text-[#23BE0A] font-semibold' : ''}>About</NavLink>
+        <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-semibold' : ''}>Home</NavLink>
+        <NavLink to="/updateprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-semibold' : ''}>Update Profile</NavLink>
+        <NavLink to="/userprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-semibold' : ''}>Profile</NavLink>
+        <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-semibold' : ''}>Contact Us</NavLink>
+        <NavLink to="/about" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-semibold' : ''}>About</NavLink>
     </>
     return (
         <div>
@@ -28,8 +40,12 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <img src="" alt="" />
-                    <Link to="/login" className="btn btn-accent text-lg">Log In</Link>
+                    {/* <img src="" alt="" /> */}
+                    {
+                        user ?
+                            <button onClick={handleSignOut} className="btn btn-accent text-lg">Sign Out</button> :
+                            <Link to="/login" className="btn btn-accent text-lg">Log In</Link>
+                    }
                 </div>
             </div>
         </div>
