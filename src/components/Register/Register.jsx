@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const {createUser} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
@@ -15,15 +18,31 @@ const Register = () => {
         const image = form.get('image');
         const password = form.get('password');
         console.log(name, email, image, password);
+        if(password.length < 6){
+            toast.error("Password should be at least 6 characters");
+            return;
+        }
+        else if(!/[A-Z]/.test(password)){
+            toast.error("Password Must have an Uppercase letter");
+            return;
+        }
+        else if(!/[a-z]/.test(password)){
+            toast.error("Password Must have a Lowercase letter");
+            return;
+        }
+
 
         createUser(email, password)
         .then(result=>{
             const registerUser = result.user;
             console.log(registerUser);
             e.target.reset();
+            alert("Login successful");
+            navigate("/");
         })
         .catch(error=>{
             console.log(error.message);
+            toast.error(error.message);
         })
     }
 
@@ -71,6 +90,7 @@ const Register = () => {
                                 <button className="btn btn-primary text-white">Register</button>
                             </div>
                         </form>
+                        <ToastContainer />
                         <p className="mb-3 text-center text-lg">Already have an account <Link to="/login" className="text-red-500 font-bold">LogIn Now</Link></p>
                     </div>
                 </div>

@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const {logInUser} = useContext(AuthContext);
+    const { logInUser, googleLogIn, githubLogIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogIn = e => {
         e.preventDefault();
@@ -15,14 +18,43 @@ const Login = () => {
         console.log(email, password);
 
         logInUser(email, password)
-        .then(result=>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            e.target.reset();
-        })
-        .catch(error=>{
-            console.log(error.message);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                e.target.reset();
+                alert('Login successful');
+                navigate("/");
+            })
+            .catch(error => {
+                console.log(error.message);
+                toast.error(error.message);
+            })
+    }
+
+    const handleGoogleLogIn = () => {
+        googleLogIn()
+            .then(result => {
+                const googleUser = result.user;
+                console.log(googleUser);
+                navigate("/");
+            })
+            .catch(error => {
+                console.log(error.message);
+                toast.error(error.message);
+            })
+    }
+
+    const handleGithubLogIn = () => {
+        githubLogIn()
+            .then(result => {
+                const githubUser = result.user;
+                console.log(githubUser);
+                navigate("/");
+            })
+            .catch(error => {
+                console.log(error.message);
+                toast.error(error.message);
+            })
     }
 
     return (
@@ -61,13 +93,14 @@ const Login = () => {
                                 <button className="btn btn-primary text-white text-xl font-bold">Login</button>
                             </div>
                         </form>
+                        <ToastContainer />
                         <p className="mb-3 text-center text-lg">Don`t have an account? <Link to="/register" className="text-red-500 font-bold">Register Now</Link></p>
                         <div className="px-2">
                             <div className="text-center md:flex lg:flex justify-between p-2">
-                                <button className="btn btn-outline mt-2"><FaGoogle></FaGoogle>
+                                <button onClick={handleGoogleLogIn} className="btn btn-outline mt-2"><FaGoogle></FaGoogle>
                                     Login With Google
                                 </button>
-                                <button className="btn btn-outline my-2"><FaGithub></FaGithub>
+                                <button onClick={handleGithubLogIn} className="btn btn-outline my-2"><FaGithub></FaGithub>
                                     Login With Github
                                 </button>
                             </div>
