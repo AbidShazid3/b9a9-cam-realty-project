@@ -16,6 +16,7 @@ import Register from './components/Register/Register';
 import CardDetails from './components/CardDetails/CardDetails';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import AuthProvider from './Provider/AuthProvider';
+import PrivateRoutes from './Routes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/data/:id',
-        element: <CardDetails></CardDetails>,
+        element: <PrivateRoutes><CardDetails></CardDetails></PrivateRoutes>,
         loader: ()=> fetch("/data.json"),
       },
       {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact></Contact>
+        element: <PrivateRoutes><Contact></Contact></PrivateRoutes>
       },
       {
         path: "/about",
