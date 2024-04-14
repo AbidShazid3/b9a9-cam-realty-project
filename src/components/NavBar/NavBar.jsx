@@ -15,9 +15,12 @@ const NavBar = () => {
 
     const links = <>
         <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Home</NavLink>
-        <NavLink to="/updateprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Update Profile</NavLink>
-        <NavLink to="/userprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Profile</NavLink>
-        <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Contact Us</NavLink>
+        {user &&
+            <>
+                <NavLink to="/updateprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Update Profile</NavLink>
+                <NavLink to="/userprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Profile</NavLink>
+                <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Contact Us</NavLink>
+            </>}
         <NavLink to="/about" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>About</NavLink>
     </>
     return (
@@ -43,7 +46,7 @@ const NavBar = () => {
                     {
                         user ?
                             <div className="flex gap-2 items-center">
-                                <img src={user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcULsYDG0utxIAndnNh9CIXVkQxhGGmH_AjqW0Icm7yA&s"} alt="" title={user?.displayName} className="rounded-full w-8 h-8 md:w-10 md:h-10 lg:w-10 lg:h-10"/>
+                                <img src={user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcULsYDG0utxIAndnNh9CIXVkQxhGGmH_AjqW0Icm7yA&s"} alt="" title={user?.displayName} className="rounded-full w-8 h-8 md:w-10 md:h-10 lg:w-10 lg:h-10" />
                                 <button onClick={handleSignOut} className="btn btn-accent text-lg">Sign Out</button>
                             </div>
                             :

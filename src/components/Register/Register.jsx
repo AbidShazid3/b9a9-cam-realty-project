@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
@@ -37,7 +37,8 @@ const Register = () => {
             const registerUser = result.user;
             console.log(registerUser);
             e.target.reset();
-            alert("Login successful");
+            toast.success('Login successful!');
+            // alert("Login successful");
             updateUserProfile(name, image)
             .then(()=>{
                 navigate("/");
@@ -93,7 +94,6 @@ const Register = () => {
                                 <button className="btn btn-primary text-white">Register</button>
                             </div>
                         </form>
-                        <ToastContainer />
                         <p className="mb-3 text-center text-lg">Already have an account <Link to="/login" className="text-red-500 font-bold">LogIn Now</Link></p>
                     </div>
                 </div>

@@ -2,13 +2,16 @@ import DataCards from "../DataCards/DataCards";
 import HomeBanner from "./HomeBanner";
 import { useLoaderData } from "react-router-dom";
 
+
+
+
 const Home = () => {
     const data = useLoaderData();
     return (
         <div>
             <HomeBanner></HomeBanner>
             <div className="text-center p-4 mt-10">
-                <h2 className="text-4xl font-bold">Featured Properties</h2>
+                <h2 className="text-4xl font-bold">Featured Residential Estates</h2>
                 <p className="p-6">Choosing the reputable Real Estate Agency is the most important step of property hunting. Start searching residential real estate with us now from renovated house, furnished villa, </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-4 gap-10">

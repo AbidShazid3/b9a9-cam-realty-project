@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -22,7 +22,8 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 e.target.reset();
-                alert('Login successful');
+                toast.success('Login successful!');
+                // alert('Login successful');
                 navigate("/");
             })
             .catch(error => {
@@ -36,6 +37,7 @@ const Login = () => {
             .then(result => {
                 const googleUser = result.user;
                 console.log(googleUser);
+                toast.success('Login successful!');
                 navigate("/");
             })
             .catch(error => {
@@ -49,6 +51,7 @@ const Login = () => {
             .then(result => {
                 const githubUser = result.user;
                 console.log(githubUser);
+                toast.success('Login successful!');
                 navigate("/");
             })
             .catch(error => {
@@ -93,7 +96,7 @@ const Login = () => {
                                 <button className="btn btn-primary text-white text-xl font-bold">Login</button>
                             </div>
                         </form>
-                        <ToastContainer />
+                        {/* <ToastContainer /> */}
                         <p className="mb-3 text-center text-lg">Don`t have an account? <Link to="/register" className="text-red-500 font-bold">Register Now</Link></p>
                         <div className="px-2">
                             <div className="text-center md:flex lg:flex justify-between p-2">

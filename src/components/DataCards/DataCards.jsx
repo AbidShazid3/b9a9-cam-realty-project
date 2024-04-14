@@ -3,26 +3,28 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const DataCards = ({ data }) => {
-    const { id, estate_title, segment_name, price, status, image, location, area } = data;
+    const { id, estate_title, price, status, image, location, area } = data;
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl md:p-5 lg:p-5">
                 <figure className="px-5 pt-5">
                     <img src={image} alt="" className="rounded-xl w-full h-56" />
                 </figure>
                 <div className="card-body">
-                    <div className='lg:flex justify-between'>
-                        <h2 className="card-title">{segment_name}</h2>
-                        <h3 className="card-title">{estate_title}</h3>
+                    <div className='flex items-center gap-2'>
+                        <h3 className="card-title">Estate:</h3>
+                        <p>{estate_title}</p>
                     </div>
-                    <div className='text-lg font-medium lg:flex justify-between'>
-                        <h2>{location}</h2>
-                        <h3>Area: {area}</h3>
+                    <div className='flex items-center gap-2'>
+                        <h2 className='text-lg font-medium'>Location:</h2>
+                        <p>{location}</p>
                     </div>
-                    <div className="lg:flex justify-between">
-                        <p>{status}</p>
-                        <p className='lg:flex justify-end'>{price}</p>
+                    <div className='flex items-center gap-2'>
+                        <h2 className='text-lg font-medium'>Area:</h2>
+                        <p>{area}</p>
                     </div>
+                    <p>{status}</p>
+                    <p>{price}</p>
                     <div className="card-actions">
                         <Link to={`/data/${id}`}><button className="btn btn-accent text-white text-base font-bold">View Property</button></Link>
                     </div>
