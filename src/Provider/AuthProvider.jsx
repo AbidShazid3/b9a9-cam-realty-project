@@ -9,6 +9,7 @@ const githubProvider = new GithubAuthProvider();
 const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
+    const [reload, setReload] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -61,9 +62,9 @@ const AuthProvider = ({children}) => {
             unSubscribe();
         }
         
-    } , [])
+    } , [reload])
 
-    const authInfo = {user, loading, createUser, updateUserProfile, logInUser, googleLogIn, githubLogIn, signOutUser}
+    const authInfo = {user, loading, setReload, createUser, updateUserProfile, logInUser, googleLogIn, githubLogIn, signOutUser}
 
     return (
         <AuthContext.Provider value={authInfo}>

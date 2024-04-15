@@ -4,10 +4,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { logInUser, googleLogIn, githubLogIn } = useContext(AuthContext);
+    const { logInUser, googleLogIn, githubLogIn, setReload } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogIn = e => {
@@ -23,7 +24,7 @@ const Login = () => {
                 console.log(loggedUser);
                 e.target.reset();
                 toast.success('Login successful!');
-                // alert('Login successful');
+                setReload(true);
                 navigate("/");
             })
             .catch(error => {
@@ -62,6 +63,9 @@ const Login = () => {
 
     return (
         <div className="mt-5">
+            <Helmet>
+                <title>Cam Realty | Log In</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200 rounded-lg">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:p-6 lg:text-left">
@@ -96,7 +100,6 @@ const Login = () => {
                                 <button className="btn btn-primary text-white text-xl font-bold">Login</button>
                             </div>
                         </form>
-                        {/* <ToastContainer /> */}
                         <p className="mb-3 text-center text-lg">Don`t have an account? <Link to="/register" className="text-red-500 font-bold">Register Now</Link></p>
                         <div className="px-2">
                             <div className="text-center md:flex lg:flex justify-between p-2">

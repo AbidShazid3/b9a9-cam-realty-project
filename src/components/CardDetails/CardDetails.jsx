@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const CardDetails = () => {
@@ -7,6 +8,9 @@ const CardDetails = () => {
     const facility = currentData.facilities
     return (
         <div className="card bg-base-100 shadow-xl lg:px-20 pt-20">
+            <Helmet>
+                <title>Can Realty | Estate Details</title>
+            </Helmet>
             <figure className="">
                 <img src={currentData.image} alt="" className="rounded-xl w-full lg:h-96 " />
             </figure>

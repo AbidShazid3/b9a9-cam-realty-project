@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { FaLocationArrow, FaMailBulk, FaPhoneAlt } from "react-icons/fa";
 
 const Contact = () => {
     return (
         <div className="mt-5 grid grid-cols-2">
+            <Helmet>
+                <title>Cam Realty | Contact Us</title>
+            </Helmet>
             <div className="">
                 <h2 className="text-2xl font-bold mb-2">Contact Details</h2>
                 <p>If you have any questions, just fill in the contact form, and we will answer you shortly. If you are living nearby, come visit our office.</p>

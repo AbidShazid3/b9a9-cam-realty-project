@@ -4,10 +4,11 @@ import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const {createUser, updateUserProfile, setReload} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleRegister = e => {
@@ -41,6 +42,7 @@ const Register = () => {
             // alert("Login successful");
             updateUserProfile(name, image)
             .then(()=>{
+                setReload(true);
                 navigate("/");
             })
         })
@@ -52,6 +54,9 @@ const Register = () => {
 
     return (
         <div className="mt-5">
+            <Helmet>
+                <title>Cam Realty | Register</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200 rounded-lg">
                 <div className="hero-content flex-col">
                     <div className="text-center">

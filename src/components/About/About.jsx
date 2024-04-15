@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 
 
 const About = () => {
     return (
         <div className="mt-5">
+            <Helmet>
+                <title>Cam Realty | About</title>
+            </Helmet>
             <div className="bg-green-300 p-4 font-bold">
                 <h2>CAM Realty – Who We Are:</h2>
             </div>

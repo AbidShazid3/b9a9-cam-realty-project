@@ -17,6 +17,7 @@ import CardDetails from './components/CardDetails/CardDetails';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import AuthProvider from './Provider/AuthProvider';
 import PrivateRoutes from './Routes/PrivateRoutes';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -27,12 +28,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: ()=> fetch("/data.json"),
+        loader: () => fetch("/data.json"),
       },
       {
         path: '/data/:id',
         element: <PrivateRoutes><CardDetails></CardDetails></PrivateRoutes>,
-        loader: ()=> fetch("/data.json"),
+        loader: () => fetch("/data.json"),
       },
       {
         path: '/updateprofile',
@@ -64,6 +65,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider><RouterProvider router={router} /></AuthProvider>
+    <HelmetProvider>
+      <AuthProvider><RouterProvider router={router} /></AuthProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )

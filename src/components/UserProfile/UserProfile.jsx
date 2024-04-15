@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const UserProfile = () => {
     const { user } = useContext(AuthContext);
     return (
         <div className="text-center">
+            <Helmet>
+                <title>Cam Realty | Profile</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mt-5">Your profile details</h2>
             <div className="mt-10 space-y-3">
                 <img src={user.photoURL} alt="" className="rounded-full w-20 h-20 mx-auto" />
