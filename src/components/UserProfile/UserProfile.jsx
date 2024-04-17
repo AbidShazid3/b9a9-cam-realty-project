@@ -13,14 +13,14 @@ const UserProfile = () => {
             </Helmet>
             <h2 className="text-2xl font-bold mt-5">Your profile details</h2>
             <div className="mt-10 space-y-3">
-                <img src={user.photoURL} alt="" className="rounded-full w-20 h-20 mx-auto" />
+                <img src={user.photoURL || "null"} alt="" className="rounded-full w-20 h-20 mx-auto" />
                 <div className="flex justify-center items-center text-xl gap-2">
                     <h2 className="font-bold">Name:</h2>
-                    <p>{user.displayName}</p>
+                    <p>{user.displayName || "null"}</p>
                 </div>
                 <div className="flex justify-center items-center text-xl gap-2">
                     <h2 className="font-bold">Email:</h2>
-                    <p>{user.email}</p>
+                    <p>{user.email || "null"}</p>
                 </div>
                 <div className="flex justify-center items-center text-xl gap-2">
                     <h2 className="font-bold">Last Sign In:</h2>
