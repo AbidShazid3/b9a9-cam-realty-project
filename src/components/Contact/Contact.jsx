@@ -3,7 +3,7 @@ import { FaLocationArrow, FaMailBulk, FaPhoneAlt } from "react-icons/fa";
 
 const Contact = () => {
     return (
-        <div className="mt-5 grid grid-cols-2">
+        <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-2">
             <Helmet>
                 <title>Cam Realty | Contact Us</title>
             </Helmet>
