@@ -2,7 +2,7 @@
 
 This is a sample README file for my React project. You can use this file to provide information about your project, such as its purpose, features, installation instructions, usage guide, etc.
 
-[Cam Realty](http://localhost:5173/)
+[Cam Realty](https://b9a9-cam-realty.web.app/)
 
 ## npm package
 
