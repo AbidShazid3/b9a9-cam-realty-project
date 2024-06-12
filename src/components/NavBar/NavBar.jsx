@@ -13,15 +13,22 @@ const NavBar = () => {
             })
     }
 
+    const handleClick = () => {
+        const elem = document.activeElement;
+        if (elem) {
+          elem?.blur();
+        }
+      };
+
     const links = <>
-        <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Home</NavLink>
+        <NavLink to="/" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''} onClick={handleClick}>Home</NavLink>
         {user &&
             <>
-                <NavLink to="/updateprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Update Profile</NavLink>
-                <NavLink to="/userprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Profile</NavLink>
-                <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>Contact Us</NavLink>
+                <NavLink to="/updateprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''} onClick={handleClick}>Update Profile</NavLink>
+                <NavLink to="/userprofile" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''} onClick={handleClick}>Profile</NavLink>
+                <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''} onClick={handleClick}>Contact Us</NavLink>
             </>}
-        <NavLink to="/about" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''}>About</NavLink>
+        <NavLink to="/about" className={({ isActive }) => isActive ? 'text-[#23BE0A] font-bold' : ''} onClick={handleClick}>About</NavLink>
     </>
     return (
         <div>
